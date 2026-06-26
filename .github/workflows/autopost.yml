@@ -1,3 +1,28 @@
-      - name: Boty Arka Planda Işletmek
+name: Telegram Auto Post Server
+
+on:
+  push:
+    branches: [ main ]
+  schedule:
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
+
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Kody barlamak
+        uses: actions/checkout@v3
+
+      - name: Python gurnamak
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Gerekli Gurallary Gurnamak
+        run: pip install pyTelegramBotAPI requests
+
+      # INE ŞU ÝERDE BOTY UZNUKSIZ (BAKY) IŞLEDERIS:
+      - name: Boty Işe Girizmek
         run: python bot.py
         
