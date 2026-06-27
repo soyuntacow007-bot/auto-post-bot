@@ -1,11 +1,12 @@
 name: Telegram Auto Post Server
 
 on:
-  push:
-    branches: [ main ]
   schedule:
-    - cron: '*/5 * * * *'
+    - cron: '*/5 * * * *' # Her 5 minutdan (Isleseň '0 */3 * * *' edip 3 sagatdan hem edip bilersiň)
   workflow_dispatch:
+
+permissions:
+  contents: write # GitHub-yň faýly ýatda saklamagy üçin rugsat
 
 jobs:
   run-bot:
@@ -22,7 +23,14 @@ jobs:
       - name: Gerekli Gurallary Gurnamak
         run: pip install pyTelegramBotAPI requests
 
-      # INE ŞU ÝERDE BOTY UZNUKSIZ (BAKY) IŞLEDERIS:
       - name: Boty Işe Girizmek
         run: python bot.py
-        
+
+      - name: Hatyň ID-sini Ýatda Saklamak (60 gün düzgünini döwýär)
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add last_msg_id.txt || true
+          git commit -m "Auto-update post ID [skip ci]" || true
+          git push || true
+          
