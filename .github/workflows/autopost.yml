@@ -2,11 +2,11 @@ name: Telegram Auto Post Server
 
 on:
   schedule:
-    - cron: '*/5 * * * *' # Her 5 minutdan (Isleseň '0 */3 * * *' edip 3 sagatdan hem edip bilersiň)
+    - cron: '*/5 * * * *' # Her 5 minutdan awtomatiki ylgar
   workflow_dispatch:
 
 permissions:
-  contents: write # GitHub-yň faýly ýatda saklamagy üçin rugsat
+  contents: write # GitHub-yň hat ID-sini ýatda saklamagy üçin hökmany rugsat
 
 jobs:
   run-bot:
@@ -33,4 +33,3 @@ jobs:
           git add last_msg_id.txt || true
           git commit -m "Auto-update post ID [skip ci]" || true
           git push || true
-          
