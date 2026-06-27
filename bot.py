@@ -1,12 +1,14 @@
 import telebot
 import os
 
-# Bot token we Kanal maglumatlary
+# Bot token (Seniň tokeniň)
 TOKEN = "8233407402:AAGAnR_P3NwNkfclvoIvz-D_gyVKzQnY4t0"
-CHANNEL_ID = "@nexus_vpn_tm"  # <-- Şu ýere öz kanal adyňy ýaz (mysal: @kanal_ady)
 
-# Kanala iberiljek hemişelik tekst (Şu ýere öz reklama tekstiňi ýaz)
-POST_TEXT = """🔥 NEXUS | VPN Türkmenistan 🇹🇲
+# ⚠️ ÜNS BERIŇ: Şu aşakdaky ýere öz hakyky kanal adyňy ýaz (Mysal: @kanal_ady)
+CHANNEL_ID = "@agza_bol_1"  
+
+# 📝 Kanala goýuljak reklama teksti (Şu ýazgyny islegiňe görä üýtgedip bilersiň)
+POST_TEXT = """🔥 NEXUS SERVİVES
 
 🚀 Çalt we durnukly VPN hyzmatlary!
 🔓 Ähli sosial ulgamlar açyk.
@@ -15,7 +17,7 @@ Habarlaşmak üçin: @admin"""
 
 bot = telebot.TeleBot(TOKEN)
 
-# Öňki iberilen hatyň ID-sini faýldan oka
+# Öňki goýlan hatyň ID-sini faýldan okaýar
 ID_FILE = "last_msg_id.txt"
 last_msg_id = None
 
@@ -25,25 +27,25 @@ if os.path.exists(ID_FILE):
         if content.isdigit():
             last_msg_id = int(content)
 
-# 1. Öňki haty kanaldan poz
+# 1. Öňki haty kanaldan pozýar
 if last_msg_id:
     try:
         bot.delete_message(CHANNEL_ID, last_msg_id)
         print(f"✅ Köne hat pozuldy (ID: {last_msg_id})")
     except Exception as e:
-        print(f"⚠️ Köne haty pozup bolmady (Mümkin el bilen pozulgandyr): {e}")
+        print(f"⚠️ Köne hat tapylmady ýa-da eýýäm pozulgy: {e}")
 
-# 2. Täze haty kanala iber
+# 2. Täze haty kanala goýýar
 try:
     sent_msg = bot.send_message(CHANNEL_ID, POST_TEXT)
     new_msg_id = sent_msg.message_id
     print(f"✅ Täze hat iberildi (ID: {new_msg_id})")
     
-    # Täze ID-ni ýatda saklamak üçin faýla ýaz
+    # Täze ID-ni ýatda saklamak üçin faýla ýazýar
     with open(ID_FILE, "w") as f:
         f.write(str(new_msg_id))
         
 except Exception as e:
-    print(f"❌ Täze hat iberilende ýalňyşlyk ýüze çykdy: {e}")
+    print(f"❌ Kanala hat ugradylanda ýalňyşlyk boldy: {e}")
 
-print("🤖 Bot işini durnukly tamamlady we ýapyldy.")
+print("🤖 Bot işini durnukly tamamlady.")
