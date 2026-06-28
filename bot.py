@@ -10,11 +10,7 @@ CHANNEL_ID = "@agza_bol_1"
 # 📝 Kanala goýuljak reklama teksti (Şu ýazgyny islegiňe görä üýtgedip bilersiň)
 POST_TEXT = """🔥 NEXUS SERVİVES
 
-🚀 Çalt we durnukly VPN hyzmatlary!
-🔓 Ähli sosial ulgamlar açyk.
-
-Habarlaşmak üçin: @admin"""
-
+Laýk basyň❤️
 bot = telebot.TeleBot(TOKEN)
 
 # Öňki goýlan hatyň ID-sini faýldan okaýar
