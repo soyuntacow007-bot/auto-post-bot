@@ -8,10 +8,11 @@ TOKEN = "8233407402:AAGAnR_P3NwNkfclvoIvz-D_gyVKzQnY4t0"
 # ⚠️ ÜNS BERIŇ: Şu aşakdaky ýere öz hakyky kanal adyňy ýaz (Mysal: @kanal_ady)
 CHANNEL_ID = "@agza_bol_1"  
 
-# 📝 Kanala goýuljak reklama teksti (Şu ýazgyny islegiňe görä üýtgedip bilersiň)
-POST_TEXT = """🔥 NEXUS SERVİVES
+# 📝 Kanala goýuljak reklama teksti
+POST_TEXT = """
 
-Laýk basyň❤️
+ Laýk basyň❤️"""
+
 bot = telebot.TeleBot(TOKEN)
 
 # Öňki goýlan hatyň ID-sini faýldan okaýar
